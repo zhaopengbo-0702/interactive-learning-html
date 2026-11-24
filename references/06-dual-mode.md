@@ -80,7 +80,7 @@ library（学案章节/小节/块）
 ## 7. 构建与版本
 
 ```powershell
-python build.py --game      # dist/game.html
+python build.py             # dist/game.html
 python build_study.py       # dist/study.html
 ```
 

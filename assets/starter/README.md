@@ -16,6 +16,10 @@ python build_study.py      # => dist/study.html（学案）
 copy data.schema.json data.json
 ```
 
+## 1.5 先定视觉基准（重要）
+
+不要直接开写：先找 1–2 个参考页面（或用户喜欢的旧版），定下三色、两种字体、版心宽度；把参考截图放进 `assets/design-refs/`。详细规范见 `../../references/07-visual-design.md`。
+
 ## 2. 改内容：只改 `data.json`
 
 - `library`：学案正文（章节 → 小节 → 块）。这是**唯一事实源**；
