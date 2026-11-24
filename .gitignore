@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+assets/starter/dist/
+assets/starter/data.json
+assets/starter/tex-svg.js
+.DS_Store
+Thumbs.db
+.env
+.env.*
