@@ -31,6 +31,7 @@ AUDIT_JS = r"""
     { n: "raw-latex", re: /\\\(|\\\)|\\\[|\\\]|\\begin\{|\\text\{|\\frac/ },
     { n: "empty-paren", re: /（\s*）|\(\s*\)/ },
     { n: "colon-then-punct", re: /[：:]\s*[。，、；]/ },
+    { n: "leading-punct", re: /(^|\n)\s*[：:，,、；;]/ },
     { n: "end-colon", re: /[：:]\s*$/ }
   ];
   function inspect() {
@@ -44,7 +45,10 @@ AUDIT_JS = r"""
     Array.prototype.forEach.call(clone.querySelectorAll("code,pre"), function (n) {
       n.parentNode.replaceChild(document.createTextNode("⟦代码⟧"), n);
     });
-    Array.prototype.forEach.call(clone.querySelectorAll("script,style,button,input,canvas"), function (n) { n.remove(); });
+    Array.prototype.forEach.call(clone.querySelectorAll("button"), function (n) {
+      n.parentNode.replaceChild(document.createTextNode(" " + (n.textContent || "") + " "), n);
+    });
+    Array.prototype.forEach.call(clone.querySelectorAll("script,style,input,canvas"), function (n) { n.remove(); });
     var txt = (clone.textContent || "").replace(/\u00a0/g, " ");
     if (txt.indexOf("$") >= 0) res.raw = 1;
     RULES.forEach(function (r) {
